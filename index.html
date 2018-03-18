@@ -12,6 +12,12 @@
       to { transform: rotate(360deg); }
     }
 
+    a{color: black}
+
+    .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+      background-color: steelblue;
+    }
+
     .spinner-border {
       position: relative;
       display: inline-block;
@@ -55,48 +61,214 @@
     .spinner-border-sm.spinner-border-reverse::after {
       border-width: .2em;
     }
-  </style>
-  <style>
+
     .side-bar {
       position:sticky;
       top: 4rem;
       z-index: 1000;
       height: calc(100vh - 4rem);
     }
+    
+    .loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      width: 120px;
+      height: 120px;
+      -webkit-animation: spin 2s linear infinite; /* Safari */
+      animation: spin 2s linear infinite;
+      display: none;
+      position: absolute;
+      margin-left: 45%;
+      margin-top: 20%;
+    }
+    
+    button {
+      display: block;
+      width: 150px !important;
+    }
+    button.btn-outline-secondary {
+      background: white;
+    }
+    .icon-cog {
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3c?xml version='1.0'?%3e%3csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3e%3cpath fill='#808080' d='m14 8.3v-2.57l-1.58-.264c-.117-.44-.292-.848-.496-1.2l.93-1.285-1.81-1.84-1.31.908c-.371-.205-.781-.380-1.187-.497l-.259-1.552h-2.568l-.263 1.578c-.437.117-.816.293-1.196.497l-1.282-.905-1.838 1.81.934 1.287c-.2.38-.376.79-.493 1.228l-1.578.235v2.57l1.575.264c.117.438.292.818.496 1.198l-.93 1.315 1.809 1.813 1.312-.938c.38.205.787.38 1.224.497l.260 1.55h2.566l.263-1.58c.408-.117.817-.293 1.196-.497l1.315.935 1.81-1.812-.935-1.315c.203-.38.38-.76.495-1.2l1.54-.225zm-7 1.404c-1.488 0-2.683-1.2-2.683-2.69s1.225-2.687 2.683-2.687 2.683 1.198 2.683 2.69c0 1.49-1.195 2.688-2.683 2.688z'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      vertical-align: -3px;
+    }
+    button:hover .icon-cog {
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3c?xml version='1.0'?%3e%3csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3e%3cpath fill='#ffffff' d='m14 8.3v-2.57l-1.58-.264c-.117-.44-.292-.848-.496-1.2l.93-1.285-1.81-1.84-1.31.908c-.371-.205-.781-.380-1.187-.497l-.259-1.552h-2.568l-.263 1.578c-.437.117-.816.293-1.196.497l-1.282-.905-1.838 1.81.934 1.287c-.2.38-.376.79-.493 1.228l-1.578.235v2.57l1.575.264c.117.438.292.818.496 1.198l-.93 1.315 1.809 1.813 1.312-.938c.38.205.787.38 1.224.497l.260 1.55h2.566l.263-1.58c.408-.117.817-.293 1.196-.497l1.315.935 1.81-1.812-.935-1.315c.203-.38.38-.76.495-1.2l1.54-.225zm-7 1.404c-1.488 0-2.683-1.2-2.683-2.69s1.225-2.687 2.683-2.687 2.683 1.198 2.683 2.69c0 1.49-1.195 2.688-2.683 2.688z'/%3e%3c/svg%3e");
+    }
+
+    /* Safari */
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .navbar-brand {
+      padding-top: 0;
+    }
+
+    .numberPanel {
+      display: none;
+      margin-right: 10px;
+      float: left;
+      width: 9%;
+      height: 170px;
+    }
+    .numberPanel.show {
+      display: inline-block;
+      }
+
+    .nav-item a:hover {
+      background: #efefef;
+    }
+    
+    .btn-primary {
+        background-color: steelblue;
+        border-color: steelblue;
+    }
+    .numberPanel .number {
+      display: block;
+      width: 100%;
+      height: 100px;
+      background: skyblue;
+      xborder-radius: 3px;
+      color: #fff;
+      text-align: center;
+      line-height: 100px;
+      font-size: 40px;
+    }
+
+    .numberPanel.warning .number{
+      background: sandybrown !important;
+    }
+
+    .numberPanel.danger .number{
+      background: crimson !important;
+    }
+
+    .numberPanel .title {
+      font-size: 10px;
+      line-height: 12px;
+      color: #000;
+      text-align: center;
+      font-family: arial;
+      display: block;
+      margin-top: 5px;
+    }
+    .back-to-top:before {
+      content: "";
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='25' version='1.1' height='25' viewBox='0 0 64 64' enable-background='new 0 0 64 64'%3e%3cg%3e%3cpath fill='%23ffffff' d='M3.352,48.296l28.56-28.328l28.58,28.347c0.397,0.394,0.917,0.59,1.436,0.59c0.52,0,1.04-0.196,1.436-0.59 c0.793-0.787,0.793-2.062,0-2.849l-29.98-29.735c-0.2-0.2-0.494-0.375-0.757-0.475c-0.75-0.282-1.597-0.107-2.166,0.456 L0.479,45.447c-0.793,0.787-0.793,2.062,0,2.849C1.273,49.082,2.558,49.082,3.352,48.296z'%3e%3c/path%3e%3c/g%3e%3c/svg%3e");
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      display: block;
+      margin-left: 13px;
+      margin-top: 10px;
+    }
+
+    .back-to-top {
+      width: 50px;
+      height: 50px;
+      display: block;
+      background: #1d2124;
+      line-height: 17px;
+      border-radius: 50%;
+      color: white;
+      position: fixed;
+      bottom: 100px;
+      right: 50px;
+      z-index: 99;
+    }
+
+    .back-to-top:hover {background: #007bff;}
+
+    .back-to-top:after {
+      content: "Back to Top";
+      display: block;
+      font-size: 10px;
+      position: absolute;
+      margin-top: 55px;
+      color: black;
+      width: 60px;
+    }
+  
+    .anchor:before { 
+      display: block; 
+      content: " "; 
+      margin-top: -75px; 
+      height: 75px; 
+      visibility: hidden; 
+    }
+
+    .sort, #TPShowSort {display: none;}
+    #TPReviewSort, #TPShowSort {width: 100%;}
+
+    .number-wrapper {
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+    }
+    .number-wrapper-warning:before {
+      content: "Warnings:";
+      display: block;
+      border-bottom: 1px solid #efefef;
+      padding-bottom: 5px;
+      padding-left: 20px;
+      margin-bottom: 10px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      color: #333;
+    }
   </style>
 </head>
 <body>
   <div class="container-fluid"><!-- container -->
+    <a href="#back-to-top" class="back-to-top" id="backToTopBtn"></a>
+    <a name="back-to-top"></a>
+    
 
     <div class="navbar sticky-top navbar-expand-md navbar-light bg-light"><!-- navbar -->
-      <a href="#" class="navbar-brand">AWS Inventory</a>
+      
 
       <form id="aws-credentials" role="form" class="form-inline col"><!-- credentials -->
         <div class="form-row col">
-          <div class="col col-5 align-self-start">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-2">
+              <a href="#" class="navbar-brand">AWS Inventory</a>
+          </div>
+          <div class="col-6 col-lg-4">
             <div class="input-group input-group-sm">
               <div class="input-group-prepend">
                 <span class="input-group-text">AWS Key ID</span>
               </div>
-              <input type="text" tabindex="1" id="aws-access-key-id" class="form-control form-control-sm" placeholder="AKIA0123456789ABCDEF">
+              <input type="text" tabindex="1" id="aws-access-key-id" class="form-control form-control-sm" placeholder="AKIAJIAHG2UKNCGRPKKQ">
             </div>
           </div>
-          <div class="col col-5">
+          <div class="col-6 col-lg-4">
             <div class="input-group input-group-sm">
               <div class="input-group-prepend">
                 <span class="input-group-text">Secret</span>
               </div>
-              <input type="password" tabindex="2" id="aws-access-secret-key" class="form-control form-control-sm" placeholder="0123456789abcdef">
+              <input type="password" tabindex="2" id="aws-access-secret-key" class="form-control form-control-sm" placeholder="fE+FpzHadzuoUDM8pdpLTS2W7fTEy7nVinsfmb8b">
             </div>
           </div>
-          <div class="col col-1 align-self-end">
+          <div class="col-6 col-md-3 offset-md-6 col-lg-1 offset-lg-0">
             <div class="input-group input-group-sm">
-              <button type="submit" tabindex="7" id="aws-credentials-verify" class="btn btn-outline-primary btn-sm form-control form-control-sm" data-toggle="button" aria-pressed="false" autocomplete="off">confirm</button>
+              <button type="submit" tabindex="7" id="aws-credentials-verify" class="btn btn-primary btn-sm form-control form-control-sm" data-toggle="button" aria-pressed="false" autocomplete="off">Confirm</button>
             </div>
           </div>
-          <div class="col col-1 align-self-end">
+          <div class="col-6 col-md-3 col-lg-1">
             <div class="input-group input-group-sm">
-              <button type="button" tabindex="8" id="btn-advanced" class="btn btn-outline-secondary btn-sm form-control form-control-sm" data-toggle="button" aria-expanded="false" aria-pressed="false" aria-controls="aws-advanced" autocomplete="off">advanced</button>
+              <button type="button" tabindex="8" id="btn-advanced" class="btn btn-outline-secondary btn-sm form-control form-control-sm" data-toggle="button" aria-expanded="false" aria-pressed="false" aria-controls="aws-advanced" autocomplete="off"><span class="icon-cog"></span> Settings </button>
             </div>
           </div>
         </div>
@@ -162,12 +334,41 @@
 
     <div id="alerts"></div>
 
+    <div class="row">
+      <div class="col-12">
+          <div class="loader"></div>
+      </div>
+    </div>
+
     <div class="row mt-2">
       <div class="col-2 side-bar">
         <ul id="aws-region-tabs" class="nav flex-sm-column nav-pills" role="tablist" aria-orientation="vertical"></ul><!-- regions -->
       </div>
       <div class="col-10">
-        <div id="aws-inventory" class="tab-content"></div>
+        <div class="row">
+          <div class="col-10 col-sm-2">
+            <div class="input-group mb-3 sort">
+              <select class="custom-select" id="TPReviewSort">
+                <option value="" selected disabled>Sort by...</option>
+                <option value="data-ratingvalue" data-order="H">Highest value</option>
+                <option value="data-ratingvalue" data-order="L">Lowest value</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-2 col-sm-2">
+            <div class="input-group mb-3 sort">
+              <select class="custom-select" id="TPShowSort">
+                <option value="30" selected data-show="100">Show all</option>
+                <option value="9" data-show="9">Top 10</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div id="aws-inventory" class="tab-content"></div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -724,7 +925,7 @@
           title: "EC2 Instances",
           id: "ec2-instances",
           jmespath: "Reservations[].Instances",
-          headings: ["InstanceId", "InstanceType", "ImageId", "LaunchTime", "KeyName", "State.Name", {"Tag:Name": 'Tags[?Key=="Name"].Value[]'}]
+          headings: ["InstanceId", "InstanceType", "ImageId", "LaunchTime", "KeyName", "State.Name", {"Tag:Name": 'Tags[?Key=="Name"].Value[]'}, "Price"]
         },
         { service: "EC2",
           api: "describeInternetGateways",
@@ -2147,11 +2348,17 @@
       </div>`
 
       var serviceButton =
-      `<a href="#" class="btn btn-sm btn-light col col-12 text-left mb-1" data-toggle="collapse" aria-expanded="false">
+      `<a href="#" class="btn btn-sm btn-light col col-12 text-left mb-1 anchor" data-toggle="collapse" aria-expanded="false">
         <span class="spinner spinner-border spinner-border-sm"></span>
         <span class="counter badge badge-light" style="display:none">?</span>
         &nbsp;<span class="title"></span><span class="timing badge font-weight-light" style="display:none"></span>
       </a>`
+
+      var numberPanel =
+      `<div>
+          <span class="number"></span>
+          <a href="#" class="title"></a>
+       </div>`
 
       function createTableHead(headings) {
         const tr = $('<tr></tr>')
@@ -2195,8 +2402,10 @@
       function inventoryServices() {
         for (r=0; r<AWS_REGIONS.length; r++) {
           let region = AWS_REGIONS[r];
+
           for (let q=0; q<awsQueries.length; q++) {
             const query = awsQueries[q]
+
             // if (query.service !== 'WAF') { // DEBUG
             //   continue // DEBUG
             // } // DEBUG
@@ -2212,6 +2421,7 @@
             if (query.hasOwnProperty('skip_regions') && query.skip_regions.includes(region)) {
               continue // skip specified regions
             }
+
             const startTs = Date.now()
             let caller
             try {
@@ -2220,18 +2430,27 @@
               console.log(`Error using query.service ${query.service}: `, e.message)
               continue
             }
+            
             let content = $(tableTemplate);
-            content.attr('id', `region-${region}-${query.id}`);
+                content.attr('id', `region-${region}-${query.id}`);
+
             let button = $(serviceButton);
-            button.attr('id', `btn-region-${region}-${query.id}`)
-            button.attr('data-target', `#region-${region}-${query.id}`);
-            button.attr('aria-controls', `region-${region}-${query.id}`);
-            button.find('.title').text(query.title);
+                button.attr('id', `btn-region-${region}-${query.id}`)
+                button.attr('data-target', `#region-${region}-${query.id}`);
+                button.attr('aria-controls', `region-${region}-${query.id}`);
+                button.find('.title').text(query.title);
+
+            let number = $(numberPanel);
+                number.attr('class', `region-${region} numberPanel show`);
+
             $(`#region-${region}`).append([button, content]);
+            
             const showCounter = function(text, timing) {
+/* COUNTER for numbers */
               button.find('.counter').text(text)
               button.find('.timing').html(timing.toString().length < 3 ? `&mdash; ${timing}ms` : `&mdash; ${timing/1000}s`)
               button.find('.spinner').hide()
+/* Show COUNTER */
               button.find('.counter').show()
               button.find('.timing').show()
             }
@@ -2239,9 +2458,15 @@
               if (err) {
                 content.empty()
                 var alert = $(`<div class="alert alert-danger show my-2" role="alert"><strong>Error:</strong> ${err.message}</div>`)
-                content.append(alert);
-                button.removeClass('btn-light').addClass('btn-warning')
-                showCounter('X', Date.now() - startTs)
+                    content.append(alert);
+                    let container = $(`#region-${region}-wrapper-warning`);
+                
+                    number.addClass('danger');
+                    number.find('.title').attr('href',`#btn-region-${region}-${query.id}`).text(query.title);
+
+                    number.prependTo(container);
+                    button.removeClass('btn-light').addClass('btn-danger')
+                    showCounter('!', Date.now() - startTs)
                 return false
               }
               let information
@@ -2251,16 +2476,74 @@
                 console.error(`Error with jmespath: ${query.jmespath}[]: ${e.message}`)
               }
               if (!information) {
-                button.removeClass('btn-light').addClass('btn-warning')
-                showCounter('0', Date.now() - startTs)
+                
+                let container = $(`#region-${region}-wrapper-warning`);
+                
+                number.addClass('warning');
+                number.find('.title').attr('href',`#btn-region-${region}-${query.id}`).text(query.title);
+
+                number.prependTo(container);
+
+                button.removeClass('btn-light').addClass('btn-warning');
+                showCounter('0', Date.now() - startTs);
+
                 return false
               }
+              /* Handles blue cell background if information > 0 */
               if (information.length > 0) {
                 // button.find('.btn-outline-primary').removeClass('btn-outline-primary').addClass('btn-primary')
-                button.removeClass('btn-light').addClass('btn-primary')
-                content.find('thead').append(createTableHead(query.headings))
-                content.find('tbody').append(createTableBody(query.headings, information))
+///////////////
+//// SANDBOX
+                let thisNumber = information.length;
+                let container = $(`#region-${region}-wrapper`);
+
+                number.find('.number').text(thisNumber);
+                number.attr('data-ratingvalue',thisNumber);
+                number.find('.title').attr('href',`#btn-region-${region}-${query.id}`).text(query.title);
+
+                button.removeClass('btn-light').addClass('btn-primary');
+                content.find('thead').append(createTableHead(query.headings));
+                content.find('tbody').append(createTableBody(query.headings, information));
+                
+                number.prependTo(container);
+                
+                $('#TPReviewSort').change(function() {
+                  let value = $(this).find(':selected').attr('value');
+                  let order = $(this).find(':selected').attr('data-order');
+                  filterSort(container, '.numberPanel', value, order);
+                  $('#TPShowSort').show();
+                });
+
+                function filterSort(wrapper, elmToSort, attrToSort, orderOf) {
+                  $(wrapper).find(elmToSort).sort(function (a, b) {
+                    if (orderOf === 'H') {
+                      return +b.getAttribute(attrToSort) - +a.getAttribute(attrToSort);
+                    } 
+                    if (orderOf === 'L') {
+                      return +a.getAttribute(attrToSort) - +b.getAttribute(attrToSort);
+                    }
+                  }).prependTo(wrapper);
+                }
+
+                $('#TPShowSort').change(function() {
+                  let showValue = $(this).find(':selected').attr('data-show'); //data-showall
+                  filterShow(container, '.numberPanel', showValue);
+                });
+
+                function filterShow(wrapper, elmToShow, show) {
+                  $(wrapper).find(elmToShow).removeClass('show');
+                  $(wrapper).find(elmToShow).each(function(i) {
+                    let num = i++;
+                    if (num <= show && num > -1)
+                      $(this).addClass('show');
+                  });
+                }
+                                
+//// SANDBOX END  
+////////////////          
+          
               }
+              
               showCounter(information.length, Date.now() - startTs)
             }
             if (query.hasOwnProperty('params')) {
@@ -2282,21 +2565,32 @@
         var ec2 = new AWS.EC2()
         var tabs = []
         var tabPanes = []
+
         ec2.describeRegions(function(err, data) {
-          $('#aws-region-tabs').empty()
-          $('#aws-inventory').empty()
+          $('#aws-region-tabs').empty();
+          $('#aws-inventory').empty();
+          
           let regions = data.Regions.map(function(r){ return r.RegionName }).sort();
-          regions = ["global"].concat(regions);
-          window.AWS_REGIONS = regions;
+              regions = ["global"].concat(regions);
+              window.AWS_REGIONS = regions;
+
           for (var i=0; i<regions.length; i++) {
             tabs.push( $(`<li class="nav-item"><a href="#region-${regions[i]}" id="tab-region-${regions[i]}" class="nav-link" data-toggle="pill" role="tab">${regions[i]}</a></li>`) );
-            tabPanes.push( $(`<div class="tab-pane show" id="region-${regions[i]}" role="tabpanel" aria-labelledby="tab-region-${regions[i]}"></div>`) )
+            tabPanes.push( $(`<div class="tab-pane show" id="region-${regions[i]}" role="tabpanel" aria-labelledby="tab-region-${regions[i]}"><div id="region-${regions[i]}-wrapper" class="number-wrapper"></div><div id="region-${regions[i]}-wrapper-warning" class="number-wrapper-warning"></div></div>`) );
           }
+  
           $('#aws-region-tabs').append(tabs);
           $('#aws-inventory').append(tabPanes);
-          inventoryServices()
-          $('#tab-region-'+regions[0]).tab('show');
-        })
+
+          $('#tab-region-'+regions[0]).tab('show');         
+          
+          inventoryServices();
+
+          //var topTen = document.querySelector(".tab-pane.active .btn-primary .counter").textContent;
+          //console.error('TOPTEN: ' + topTen);
+          $('.sort').show();
+          $('.loader').hide();
+        });
       }
 
       function credentialsFailAlert(message) {
@@ -2309,9 +2603,13 @@
       function credentialsVerify(event) {
         /* verify that the entered credentials are usable
            then hide credentials input form */
+
+        $('.loader').show();
+
         $('#aws-credentials-verify').prop('disabled', true);
         AWS.config.region = 'us-east-1'
         // AWS.config.logger = console // for debugging AWS-SDK
+
         const credentials = {
           accessKeyId: $('#aws-access-key-id').val(),
           secretAccessKey: $('#aws-access-secret-key').val(),
@@ -2384,6 +2682,9 @@
       $('#aws-credentials-verify').on('click', credentialsVerify);
       $('#aws-credentials-drop').on('click', credentialsDrop);
       $('#btn-advanced').on('click', function(){ $('#aws-session').show(); $('#aws-advanced').show(); $('#btn-advanced').hide() })
+    });
+    $('#backToTopBtn').click(function(){
+      window.scrollTo(0,0);
     });
   </script>
 </html>
